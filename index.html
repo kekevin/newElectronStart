@@ -1,0 +1,41 @@
+<!-- 渲染进程 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <h1>Hello World!</h1>
+  We are using node
+  <script>document.write(process.versions.node)</script>, Chrome
+  <script>document.write(process.versions.chrome)</script>, and Electron
+  <script>document.write(process.versions.electron)</script>.
+  <input type="button" id="openNew" value="aaa">
+</body>
+<script>
+  var electron = require('electron')
+  var remote = electron.remote
+  const app = remote.app
+  var screenObj = remote.screen
+  var browser = remote.BrowserWindow
+  var size = screenObj.getPrimaryDisplay().workAreaSize;
+  console.log(size)
+  var win
+
+  openNew.onclick = function () {
+    console.log(2111111111111)
+    win = new browser({
+      // height:size.height,
+      // width:size.width,
+      fullscreen: true
+    })
+    // win.loadURL("http://www.baidu.com")
+    win.loadURL(__dirname + '/src/page2.html')
+
+  }
+</script>
+
+</html>
